@@ -2,36 +2,40 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <title>VesselFinder Map</title>
+    <title>VesselFinder Sidebar</title>
     <style>
-        /* Sørger for at kartet fyller hele skjermflaten i SocialScreen */
+        /* Fjerner alt av marger og tvinger siden til å være 100% av skjermen */
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            width: 100%;
+            height: 100vh;
+            width: 100vw;
             overflow: hidden;
             background-color: #f4f4f4;
         }
-        #vesselfinder-wrapper {
+        /* Denne biten sørger for at kartet strekker seg helt ned */
+        #vesselfinder-container {
             width: 100%;
-            height: 100vh;
+            height: 100%;
+        }
+        iframe {
+            min-height: 100vh !important;
         }
     </style>
 </head>
 <body>
 
-    <div id="vesselfinder-wrapper">
+    <div id="vesselfinder-container">
         <script type="text/javascript">
-            // Innstillinger for kartet
-            var width = "100%";          // Bredde i prosent
-            var height = "100%";         // Vi setter denne til 100% for å fylle høyden
-            var latitude = "60.4227";    // Din breddegrad
-            var longitude = "5.0028";    // Din lengdegrad
-            var zoom = "12";             // Zoom-nivå (8 var litt langt ute, 12 er bedre for kysten)
-            var names = true;            // Vis skipsnavn
-            var fleet = "";              // Evt. flåte-ID
-            var click_to_activate = false; // Kartet er aktivt med en gang
+            // Vi setter height til et veldig høyt tall eller "100%" 
+            // for å tvinge skriptet til å fylle hele sidebaren din.
+            var width = "100%";
+            var height = "100%"; 
+            var latitude = "60.4227";
+            var longitude = "5.0028";
+            var zoom = "12";
+            var names = true;
+            var click_to_activate = false;
         </script>
         <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
     </div>
