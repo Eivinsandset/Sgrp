@@ -1,44 +1,43 @@
 <!DOCTYPE html>
-<html lang="no">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>VesselFinder Sidebar</title>
     <style>
-        /* Fjerner alt av marger og tvinger siden til å være 100% av skjermen */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            background-color: #f4f4f4;
+        body, html { 
+            margin: 0; padding: 0; height: 100vh; width: 100vw; overflow: hidden; 
         }
-        /* Denne biten sørger for at kartet strekker seg helt ned */
-        #vesselfinder-container {
-            width: 100%;
-            height: 100%;
-        }
-        iframe {
+        /* Dette er "tvangstrøya" som tvinger kartet til å bli stort */
+        iframe#vesselfinder, .vesselfinder-container iframe {
+            height: 100vh !important;
             min-height: 100vh !important;
+            width: 100% !important;
         }
     </style>
 </head>
 <body>
 
-    <div id="vesselfinder-container">
-        <script type="text/javascript">
-            // Vi setter height til et veldig høyt tall eller "100%" 
-            // for å tvinge skriptet til å fylle hele sidebaren din.
-            var width = "100%";
-            var height = "100%"; 
-            var latitude = "60.4227";
-            var longitude = "5.0028";
-            var zoom = "12";
-            var names = true;
-            var click_to_activate = false;
-        </script>
-        <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
-    </div>
+    <script type="text/javascript">
+        var width = "100%";
+        var height = "100%"; // Vi ber om 100%, men skriptet ignorerer det ofte...
+        var latitude = "60.4227";
+        var longitude = "5.0028";
+        var zoom = "12";
+        var names = true;
+        var click_to_activate = false;
+    </script>
+    <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
+
+    <script>
+        // Dette lille skriptet kjører rett etterpå og tvinger høyden på plass
+        setInterval(function() {
+            var frames = document.getElementsByTagName('iframe');
+            for (var i = 0; i < frames.length; i++) {
+                if (frames[i].src.includes('vesselfinder')) {
+                    frames[i].style.height = '100vh';
+                }
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
