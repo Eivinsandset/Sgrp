@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
-    <title>MarineTraffic Map Embed</title>
+    <meta charset="UTF-8">
+    <title>VesselFinder Map</title>
     <style>
+        /* Sørger for at kartet fyller hele skjermflaten i SocialScreen */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
-        }
-
-        #mapContainer {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            overflow: hidden;
+            background-color: #f4f4f4;
+        }
+        #vesselfinder-wrapper {
+            width: 100%;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div id="mapContainer">
+
+    <div id="vesselfinder-wrapper">
         <script type="text/javascript">
-            width='100%';
-            height='100%';
-            border='0';
-            shownames='true';
-            latitude='60.4227';
-            longitude='5.0028';
-            zoom='12';
-            maptype='1';
-            trackvessel='0';
-            fleet='';
+            // Innstillinger for kartet
+            var width = "100%";          // Bredde i prosent
+            var height = "100%";         // Vi setter denne til 100% for å fylle høyden
+            var latitude = "60.4227";    // Din breddegrad
+            var longitude = "5.0028";    // Din lengdegrad
+            var zoom = "12";             // Zoom-nivå (8 var litt langt ute, 12 er bedre for kysten)
+            var names = true;            // Vis skipsnavn
+            var fleet = "";              // Evt. flåte-ID
+            var click_to_activate = false; // Kartet er aktivt med en gang
         </script>
-        <script type="text/javascript" src="https://www.marinetraffic.com/js/embed.js"></script>
+        <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
     </div>
+
 </body>
 </html>
